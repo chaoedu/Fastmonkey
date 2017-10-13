@@ -100,8 +100,8 @@ extension Monkey {
                 let session = try XCTestWDSessionManager.singleton.checkDefaultSessionthrow()
                 let root = session.application
                 if root != nil{
-                    let usage = "xpath"
-                    let tag = "//XCUIElementTypeOther[@name='登录']/XCUIElementTypeTextField"
+                    let usage = "accessibility id"
+                    let tag = "欢迎来到PhiHome"
                     let element = try? XCTestWDFindElementUtils.filterElement(usingText: usage, withvalue: tag, underElement: root!)
                     if let element = element {
                         if element != nil {

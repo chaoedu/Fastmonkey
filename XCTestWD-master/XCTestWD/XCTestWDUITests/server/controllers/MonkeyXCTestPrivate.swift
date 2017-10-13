@@ -161,10 +161,10 @@ extension Monkey {
                 if root == nil{
                     return
                 }
-                let usage = "xpath"
-                let username = "//XCUIElementTypeOther[@name='登录']/XCUIElementTypeTextField"
-                let passwd = "//XCUIElementTypeOther[@name='登录']/XCUIElementTypeSecureTextField"
-                let button = "//XCUIElementTypeOther[@name='登录']//XCUIElementTypeStaticText[@name='登录']"
+                let usage = "accessibility id"
+                let username = "IDACC_LOGIN_TF_USERNAME"
+                let passwd = "IDACC_LOGIN_TF_PASSWD"
+                let button = "IDACC_LOGIN_BTN_LOGIN"
                 
                 var element = try? XCTestWDFindElementUtils.filterElement(usingText: usage, withvalue: username, underElement: root!)
                 
@@ -172,7 +172,8 @@ extension Monkey {
                     if let element = element {
                         
                         NSLog("XCTestWDSetup->loginuser find?\(String(describing: element))<-XCTestWDSetup")
-                        let value = "1111111111"
+                        element.typeText((element.value as? String ?? "").characters.map { _ in XCUIKeyboardKeyDelete }.joined(separator: ""))
+                        let value = "username"
                         let rect = element.wdRect()
                         let point = CGPoint(x:rect["x"]!,y:rect["y"]!)
                         let locations = [point]
@@ -200,7 +201,7 @@ extension Monkey {
                 if let element = element {
                     if let element = element {
                         NSLog("XCTestWDSetup->passwd find?\(String(describing: element))<-XCTestWDSetup")
-                        let value = "111111"
+                        let value = "password"
                         let rect = element.wdRect()
                         let point = CGPoint(x:rect["x"]!,y:rect["y"]!)
                         let locations = [point]

@@ -12,8 +12,8 @@ public class XCTestWDMonkey {
 
     func startMonkey() -> Int {
         
-        let bundleID = "com.PandaTV.Live-iPhone"
-        //let bundleID = "com.pandatv.test.meizi"
+        let bundleID = "com.phicomm.PhiHome.ByInHouse"
+        //let bundleID = "com.phicomm.PhiHome.ByInHouse"
 
         var app : XCUIApplication!
         var session : XCTestWDSession!
@@ -39,7 +39,7 @@ public class XCTestWDMonkey {
         monkey.addDefaultXCTestPrivateActions()
         monkey.addXCTestTapAlertAction(interval: 100, application: app)
         monkey.addXCTestCheckCurrentApp(interval: 10, application: app)
-        //monkey.addXCTestAppLogin(interval: 50, application: app)
+        monkey.addXCTestAppLogin(interval: 50, application: app)
         monkey.monkeyAround()
         RunLoop.main.run()
         return 0
